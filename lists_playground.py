@@ -1,4 +1,4 @@
-# data-groupings
+# lists_playground.py
 import os
 os.system('cls')
 

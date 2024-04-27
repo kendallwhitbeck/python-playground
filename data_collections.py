@@ -83,3 +83,5 @@ print("dataVar =", dataVar)
 dataVar[1] = dataVar[1] + dataVar[0] # Note: if dataVar were a tuple (using parentheses instead of brackets), then this line would raise a TypeError
 print("dataVar =", dataVar)
 
+print("dct")
+print(dct.get('1'))
