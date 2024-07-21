@@ -9,7 +9,7 @@ x = range(1,100)
 # y = [1]*len(x)  # Initialize y list w/ value of 1 for as many x data points as there are
 
 # Time-complexity formulas
-complexity_labels = ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)', 'O(n^2)', 'O(n^3)', 'O(2^n)', 'O(n!)']
+complexity_legend_labels = ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)', 'O(n^2)', 'O(n^3)', 'O(2^n)', 'O(n!)']
 formulas = [
     lambda n: 1,
     lambda n: math.log(n),
@@ -22,12 +22,12 @@ formulas = [
 ]
 
 # Calculate y-values based on time-complexity formulas
-for i, complexity_label in enumerate(complexity_labels[:-1]):
+for i, complexity_legend_label in enumerate(complexity_legend_labels[:-1]):
     formula = formulas[i]
     y_values = [formula(xi) for xi in x]
 
     # Plot the graph
-    plt.plot(x, y_values, label=complexity_label)
+    plt.plot(x, y_values, label=complexity_legend_label)
 
 # Add labels
 plt.xlabel('input size (n)')
