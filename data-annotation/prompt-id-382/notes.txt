@@ -1,0 +1,63 @@
+Response A:
+	Describe all truthfulness/correctness issues. Where possible, categorize code-related issues based on the type of issue (functionality, safety, performance, documentation).
+		For Explanations, most of the given line numbers were off: either by a couple of lines or picked out entirely wrong blocks of code. However, they were correct in their reasoning, just not pointing to the exact right lines of code. I identified the better selections as follows:
+		- explanation: (reasoning for Lines 11-13): should specify lines 13-14 (since lines 11-12 were unchanged) to specifically refer to `self.buttons` needing to be duplicated with one for player and one for computer, and to create `self.player_hits` and `self.computer_hits`.
+		- explanation: (reasoning for Lines 17-20): should specify lines 19-21.
+		- explanation: (reasoning for Lines 40-43): should specify lines 43-47.
+		- explanation: (reasoning for Lines 76-81): should specify lines 76-77.
+		- explanation: (reasoning for Lines 83-100): should specify lines 109, 117.
+		- explanation: (reasoning for Lines 118-122): should specify lines 138-143.
+		- explanation: (reasoning for Lines 124-128): should specify lines 145-149.
+		- explanation: (reasoning for Lines 104-116): duplicate of reasoning for Lines 83-100.
+
+	Describe all writing quality issues.
+		See the explanation issues above, where I mentioned the duplicate of reasoning for lines 83-100 vs lines 104-116.
+
+Response B:
+	Describe all instruction following issues.
+		The given issues don't indicate line numbers or blocks of code. Additionally, Response B provides the list of issues as code introduction comments when the prompt explicitly states,"It [the code] shouldn't contain any placeholders or comments. I also don't want to see any introductions, niceties or anything like that...." Response B seems to have confused the instructions of listing the changes first as a bulleted list, and instead placed in the code as comments.
+
+    Describe all truthfulness/correctness issues. Where possible, categorize code-related issues based on the type of issue (functionality, safety, performance, documentation).
+        Code: no issues running and no warnings or problems, but the grid doesn't show up correctly: the entire grid is assigned to A1 for both "Your Board" and "Computer's Board". Furthermore, the player cannot choose the orientation of the ship's placement, the entire ship is automatically placed from left to right from the square the player selects; however, the computer is able to place ships up and down.
+        Explanation: places the explanation within the code using markdown formatting after the requisite hash ("#") on each line to make it a comment in Python; the markdown formatting does not render since it's a comment in a .py file, so it's unnecessary. 
+
+    Describe all writing quality issues.
+        The markdown formatting would have been nice if it were written to the response outside of the code, but being in the code makes the markdown formatting annoying to read.
+
+Response C:
+    Describe all truthfulness/correctness issues. Where possible, categorize code-related issues based on the type of issue (functionality, safety, performance, documentation).
+        Code: allows placing ships incorrectly despite warning of incorrect placement, then allows the player to start game; also shows where computer's ships are, thus making the game irrerelvant. The Grid UI is not robust to placing ships on the right-most border: the numbers are on the squares (see screenshot). The legend should tell the user how long each ship is.
+        Explanation: for lines 66-68 , the check_adjacent method should be needed for ensuring adjacent squares are picked for ship placement, so removing this method is a counterproductive suggestion. The second bullet point is true in the first sentence, and the second sentence is right about needing 2 separate grids, but the reasoning is wrong. 
+
+    Describe all instruction following issues.
+        Does not specify line numbers or code blocks for the last two issues.
+
+
+
+Other comments:
+        Response A:
+        - code (syntax): runs with no modification, no problems or warnings.
+        - code (style): lines 43, 161, 191, 193, 200, 206, 262, 266, and 269 have leading spaces when it could simply be a newline.
+        - code (logic): does not robustly handle placing ships in non-consecutive order (e.g., place the ends of the ship first, then place the middle locations), but this could be due to the prompt logic, not the response.
+        - code (logic): computer hit ship but did not immediately try an adjacent location.
+        - code (logic): once player wins, no option to reset or play again (besides re-running the program)
+        - explanation: (reasoning for Lines 11-13): should specify lines 13-14 (since lines 11-12 were unchanged) to specifically refer to `self.buttons` needing to be duplicated with one for player and one for computer, and to create `self.player_hits` and `self.computer_hits`.
+        - explanation: (reasoning for Lines 17-20): should specify lines 19-21.
+        - explanation: (reasoning for Lines 40-43): should specify lines 43-47.
+        - explanation: (reasoning for Lines 76-81): should specify lines 76-77.
+        - explanation: (reasoning for Lines 83-100): should specify lines 109, 117.
+        - explanation: (reasoning for Lines 118-122): should specify lines 138-143.
+        - explanation: (reasoning for Lines 124-128): should specify lines 145-149.
+        - explanation: (reasoning for Lines 104-116): duplicate of reasoning for Lines 83-100.
+
+        Response B:
+        - instruction: very poor, listed a lot of introduction comments when the prompt explicitly states "It (the code) shouldn't contain any placeholders or comments. I also don't want to see any introductions, niceties or anything like that...." Seems to have confused the instructions of listing the changes first as a bulleted list, and instead placed in the code block.
+        - 
+
+
+Please provide a comment justifying your A vs B and A vs C preferences (4-7+ sentences):
+Between A vs B, I strongly prefer Response A because it followed the instructions much more carefully and demonstrated a deeper understanding of the required task. Response B made major instruction-following mistakes: it inserted comments and introductions into the code even though the prompt explicitly said to avoid any placeholders or comments. Additionally, B did not clearly separate the list of changes as a bulleted list outside of the code, which shows a misunderstanding of the basic task requirements. In terms of correctness, while B's code technically ran without errors, it had serious functional issues like incorrect grid display and player interaction problems, whereas A's code worked mostly properly with only minor imperfections such as failing to robustly handle non-consecutive ship placement.
+
+For A vs C, I also prefer Response A because it is more faithful to the task expectations and more correct overall. While C identified some real issues, it removed necessary functionality (like the check_adjacent method) based on incorrect reasoning, weakening its technical correctness. C's game code also had glaring gameplay flaws — for example, showing the computer's ship locations, which defeats the purpose of the game, and forcing the player to place ships horizontally. Response A, on the other hand, had small flaws like minor line number inaccuracies in the explanation but was overall correct in logic, functionality, and basic code execution.
+
+Overall, A demonstrated better technical quality, better instruction-following, and a clearer, more accurate understanding of the task compared to both B and C, along with being more concise.

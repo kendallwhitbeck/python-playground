@@ -3,7 +3,12 @@
         "**/.git": false
     },
     "cSpell.words": [
+        "borderwidth",
+        "btns",
         "columnspan",
+        "lightcyan",
+        "padx",
+        "pady",
         "rowspan"
     ]
 }
