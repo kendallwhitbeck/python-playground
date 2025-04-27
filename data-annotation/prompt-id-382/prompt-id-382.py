@@ -62,7 +62,7 @@ class Battleship:
         if self.current_ship and self.player_ships[self.current_ship] > 0:
             if (row, column) not in self.player_ships_placed:
                 if self.ship_being_placed and self.check_adjacent(self.ship_being_placed[-1], (row, column)):
-                    self.log.insert("1.0", "Ships must not be placed adjacent to each other\n")  @
+                    self.log.insert("1.0", "Ships must not be placed adjacent to each other\n")
                     return
                 self.ship_being_placed.append((row, column))
                 self.player_ships_placed[(row, column)] = self.current_ship
