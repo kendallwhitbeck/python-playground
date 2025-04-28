@@ -1,0 +1,129 @@
+=== STEPPER MOTOR SIMULATION TEST SUITE ===
+Test Date: 27-Apr-2025 16:30:47
+
+TEST 1: Step Input Testing
+------------------------
+Step Test 1: Speed = 0.1 rev/s
+  PASS: Final position correct (Expected: 1.000, Actual: 1.000)
+Step Test 2: Speed = 0.5 rev/s
+  PASS: Final position correct (Expected: 5.000, Actual: 5.000)
+Step Test 3: Speed = 1.0 rev/s
+  PASS: Final position correct (Expected: 10.000, Actual: 10.000)
+Step Test 4: Speed = 2.0 rev/s
+  PASS: Final position correct (Expected: 20.000, Actual: 20.000)
+Step Test 5: Speed = 5.0 rev/s
+  PASS: Final position correct (Expected: 50.000, Actual: 50.000)
+Step Test 6: Speed = 10.0 rev/s
+  PASS: Final position correct (Expected: 100.000, Actual: 100.000)
+
+TEST 2: Ramp Input Testing
+------------------------
+Ramp Test 1: Ramp Time = 0.5 s, Speed = 0.5 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 2: Ramp Time = 0.5 s, Speed = 1.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 3: Ramp Time = 0.5 s, Speed = 2.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 4: Ramp Time = 0.5 s, Speed = 5.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 5: Ramp Time = 1.0 s, Speed = 0.5 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 6: Ramp Time = 1.0 s, Speed = 1.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 7: Ramp Time = 1.0 s, Speed = 2.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 8: Ramp Time = 1.0 s, Speed = 5.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 9: Ramp Time = 2.0 s, Speed = 0.5 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 10: Ramp Time = 2.0 s, Speed = 1.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 11: Ramp Time = 2.0 s, Speed = 2.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 12: Ramp Time = 2.0 s, Speed = 5.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 13: Ramp Time = 5.0 s, Speed = 0.5 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 14: Ramp Time = 5.0 s, Speed = 1.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 15: Ramp Time = 5.0 s, Speed = 2.0 rev/s
+  PASS: Steady-state velocity reached correctly
+Ramp Test 16: Ramp Time = 5.0 s, Speed = 5.0 rev/s
+  PASS: Steady-state velocity reached correctly
+
+TEST 3: Sinusoidal Input Testing
+------------------------------
+Sine Test 1: Amplitude = 0.5 rev, Frequency = 0.1 Hz
+  PASS: Amplitude correct (Expected: 0.500, Actual: 0.500)
+Sine Test 2: Amplitude = 0.5 rev, Frequency = 0.5 Hz
+  PASS: Amplitude correct (Expected: 0.500, Actual: 0.500)
+Sine Test 3: Amplitude = 0.5 rev, Frequency = 1.0 Hz
+  PASS: Amplitude correct (Expected: 0.500, Actual: 0.500)
+Sine Test 4: Amplitude = 0.5 rev, Frequency = 2.0 Hz
+  PASS: Amplitude correct (Expected: 0.500, Actual: 0.500)
+Sine Test 5: Amplitude = 1.0 rev, Frequency = 0.1 Hz
+  PASS: Amplitude correct (Expected: 1.000, Actual: 1.000)
+Sine Test 6: Amplitude = 1.0 rev, Frequency = 0.5 Hz
+  PASS: Amplitude correct (Expected: 1.000, Actual: 1.000)
+Sine Test 7: Amplitude = 1.0 rev, Frequency = 1.0 Hz
+  PASS: Amplitude correct (Expected: 1.000, Actual: 1.000)
+Sine Test 8: Amplitude = 1.0 rev, Frequency = 2.0 Hz
+  PASS: Amplitude correct (Expected: 1.000, Actual: 1.000)
+Sine Test 9: Amplitude = 2.0 rev, Frequency = 0.1 Hz
+  PASS: Amplitude correct (Expected: 2.000, Actual: 2.000)
+Sine Test 10: Amplitude = 2.0 rev, Frequency = 0.5 Hz
+  PASS: Amplitude correct (Expected: 2.000, Actual: 2.000)
+Sine Test 11: Amplitude = 2.0 rev, Frequency = 1.0 Hz
+  PASS: Amplitude correct (Expected: 2.000, Actual: 2.000)
+Sine Test 12: Amplitude = 2.0 rev, Frequency = 2.0 Hz
+  PASS: Amplitude correct (Expected: 2.000, Actual: 2.000)
+
+TEST 4: Trajectory Input Testing
+------------------------------
+Trajectory Test 1
+  PASS: All waypoints reached correctly
+Trajectory Test 2
+  PASS: All waypoints reached correctly
+Trajectory Test 3
+  PASS: All waypoints reached correctly
+Trajectory Test 4
+  PASS: All waypoints reached correctly
+
+TEST 5: Edge Cases Testing
+------------------------
+Edge Case 1: Zero speed
+  PASS: Zero speed maintains zero position
+Edge Case 2: Very high speed (100 rev/s)
+  PASS: High speed handling correct
+Edge Case 3: Negative speed
+  PASS: Negative speed produces negative position
+
+TEST 6: Microstepping Testing
+---------------------------
+Microstepping Test 1: Factor = 1
+  INFO: Microstepping configuration set to 1
+Microstepping Test 2: Factor = 2
+  INFO: Microstepping configuration set to 2
+Microstepping Test 3: Factor = 4
+  INFO: Microstepping configuration set to 4
+Microstepping Test 4: Factor = 8
+  INFO: Microstepping configuration set to 8
+Microstepping Test 5: Factor = 16
+  INFO: Microstepping configuration set to 16
+
+TEST 7: Time Step Sensitivity Testing
+-----------------------------------
+Time Step Test 1: dt = 0.0001 s
+  PASS: Time step 0.0001 produces accurate results
+Time Step Test 2: dt = 0.0010 s
+  PASS: Time step 0.0010 produces accurate results
+Time Step Test 3: dt = 0.0100 s
+  PASS: Time step 0.0100 produces accurate results
+Time Step Test 4: dt = 0.1000 s
+  PASS: Time step 0.1000 produces accurate results
+
+=== TEST SUMMARY ===
+Total Tests: 50
+Passed: 45
+Failed: 5
+Success Rate: 90.0%
