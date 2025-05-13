@@ -15,9 +15,10 @@ Note how in the original code I provided that the only case in which a stable so
 
 # Response A
 The fourth explanation in Response A misinterprets when `stable_sort` is needed. The prompt states that `stable_sort` should only be used by `HASH_scan`; not directly by any print operations. The prompt asks for `HASH_scan` (not `stable_sort`) to be added to the `join` function.
+Did not provide necessary updates to `SillyQL.hpp` file. Resulted in compiler errors.
 
 # Response B
-TBD
+Provided guidance on where to add code including differentiating between SillyQL.h and SillyQL.cpp but still had compiler errors.
 
 # Section 1: Quick Response Evaluation
 ## 1st Generation
@@ -43,7 +44,6 @@ TBD
 ## 1st Generation:
 *   **Criterion 1 (Explicit, Objective, Standard):** The response should provide a modified version of the `join` function.
 *   **Criterion 1 (Implicit, Objective, Standard):** The response should indicate the appropriate file to place the modified `join` function. For example, the response should state that the modified 'join' function belongs in the `SillyQL.cpp` file.
-The response should generate a temporary index
 *   **Criterion 2 (Explicit, Objective, Standard):** Within the modified `join` function, if `table2` does not have a suitable existing persistent index for the join column (`rhsIndex`) (i.e., the condition `indexExists` is false, leading to the `else` block), the code should implement the join by creating and using a temporary hash index for `table2`. For example, this new logic should replace the previous full scan implementation within that `else` block.
 *   **Criterion 3 (Explicit, Objective, Standard):** This temporary hash index for `table2` should be a local variable within the `join` function (e.g., `std::unordered_map<TableEntry, std::vector<size_t>> temp_idx_t2;`) and should be populated using `table2.data` and the `rhsIndex`. Specifically, for each row `j` in `table2`, an entry should be made in `temp_idx_t2` where `table2.data[j][rhsIndex]` is the key and `j` is added to the vector of row indices for that key.
 *   **Criterion 4 (Explicit, Objective, Standard):** After populating the temporary hash index for `table2`, the join logic should iterate through each row `i` of `table1`, retrieve the join key `table1.data[i][lhsIndex]`, and then perform a lookup for this key in the newly created temporary hash index of `table2`.
@@ -52,5 +52,13 @@ The response should generate a temporary index
 *   **Criterion 7 (Implicit, Objective, Redundant Code or Explanations):** The response should only provide the modified `join` function. It should not include unchanged code from other functions (e.g., `print_scan_results`, if it remains unchanged from the previous turn as implied by the user) or other files, unless a new helper function is necessarily introduced for the `join` modification. For example, the response should not re-paste the entire `SillyQL.cpp` file.
 
 ## I added:
-- The response should only call the `stable_sort` function in the `HASH_scan` function.
-- The response should allow the print_scan_results function print the 0 rows messages.
+- (Explicit, Objective, Standard): The response should provide a modified version of the `join` function.
+- (Implicit, Objective, Standard): The response should indicate the appropriate file to place the modified `join` function. For example, the response should state that the modified 'join' function belongs in the `SillyQL.cpp` file.
+- (Explicit, Objective, Confounding Earlier Context) The response should retain suggested code modifications in additional changes. For example, it should only call the `stable_sort` function in the `HASH_scan` function.
+- (Explicit, Objective, Confounding Earlier Context) The response should allow the `print_*` functions - `print_if`, `print_all`, `print_rows`, `print_col_headers` - to print the 0 rows messages.
+- (Explicit, Subjective, Standard): The response should correctly handle joining table data with non-obvious indices. For example, it should generate a temporary index when an index doesn't exist or when it's in the wrong column.
+- (Implicit, Subjective, Standard): The response should correctly handle cases where multiple rows in `table2` have the same join key value when populating the temporary hash index. For example, the `std::unordered_map` used for `temp_join_idx` should map each `TableEntry` key to a `std::vector<size_t>` of `row` indices.
+
+
+
+- (need, type, category): The response should TBD
